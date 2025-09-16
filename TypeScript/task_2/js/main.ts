@@ -52,5 +52,26 @@ function createEmployee(salary: number | string): Director | Teacher {
     return new Director();
 }
 
-const employee1 = createEmployee(200);
-console.log(employee1.getCoffeeBreak());
+
+// function specific to employees
+// If employee has a workDirectorTasks method, treat it as a Director.
+
+function isDirector(employee: Director | Teacher ): employee is Director {
+    return (employee as Director).workDirectorTasks !== undefined;
+}
+
+// function executeWork
+
+function executeWork(employee: Director | Teacher): string {
+    if (isDirector(employee)) {
+        return employee.workDirectorTasks();
+    } else {
+        return employee.workTeacherTasks();
+    }
+}
+
+const emp1 = createEmployee(200);
+const emp2 = createEmployee(1000);
+
+console.log(executeWork(emp1));
+console.log(executeWork(emp2));
