@@ -31,12 +31,13 @@ interface StudentClassInterface {
   displayName(): string;
 }
 
+// Class implementation
 class StudentClass implements StudentClassInterface {
-  private firsName: string;
+  private firstName: string;
   private lastName: string;
 
-  constructor({ firsName, lastName }: StudentConstructor) {
-    this.firsName = firsName;
+  constructor({ firstName, lastName }: StudentConstructor) {
+    this.firstName = firstName;
     this.lastName = lastName;
   }
 
@@ -45,6 +46,6 @@ class StudentClass implements StudentClassInterface {
   }
 
   displayName(): string {
-    return this.firsName;
+    return this.firstName;
   }
 }
