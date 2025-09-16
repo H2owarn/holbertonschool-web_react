@@ -1,5 +1,4 @@
-// Student interface
-
+// Teacher interface
 interface Teacher {
     readonly firstName: string;
     readonly lastName: string;
@@ -9,17 +8,43 @@ interface Teacher {
     [key: string]: any;
 }
 
+// Extending the Teacher class
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
+// Printing teachers
+function printTeacher(teacher: Teacher): string  {
+  return `${teacher.firstName.charAt(0)}. ${teacher.lastName}`;
+}
 
-const director1: Directors = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
-};
 
-console.log(director1);
+// Writing a class
+// describing
+interface StudentConstructor {
+  firstName: string;
+  lastName: string;
+}
+
+interface StudentClassInterface {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+class StudentClass implements StudentClassInterface {
+  private firsName: string;
+  private lastName: string;
+
+  constructor({ firsName, lastName }: StudentConstructor) {
+    this.firsName = firsName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firsName;
+  }
+}
